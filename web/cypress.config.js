@@ -29,7 +29,7 @@ module.exports = defineConfig({
                 reject({ error: error })
               }
               resolve({ success: result })
-              pool.end
+              pool.end()
             })
           })
         },
@@ -55,7 +55,7 @@ module.exports = defineConfig({
                 reject({ error: error })
               }
               resolve({ success: result })
-              pool.end
+              pool.end()
             })
           })
         }
