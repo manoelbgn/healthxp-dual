@@ -27,11 +27,25 @@
         "weight": "",
         "feet_tall": ""
     },
-    "inv_values": {
+    "inv_age": {
         "name": "Frango Novinho",
         "email": "franguinho@gmail.com",
         "age": "12",
         "weight": "52",
         "feet_tall": "1.60"
+    },
+    "inv_weight": {
+        "name": "Frango Magrinho",
+        "email": "franguinho@gmail.com",
+        "age": "20",
+        "weight": "0",
+        "feet_tall": "1.70"
+    },
+    "inv_feet_tall": {
+        "name": "Frango Baixinho",
+        "email": "franguinho@gmail.com",
+        "age": "20",
+        "weight": "80",
+        "feet_tall": "0"
     }
 }

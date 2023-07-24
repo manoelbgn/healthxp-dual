@@ -43,7 +43,7 @@ describe('alunos', () => {
         studentPage.popup.haveText('Exclusão realizada com sucesso.')
     })
 
-    it('todos os campos são obrigatórios', ()=> {
+    it('todos os campos são obrigatórios', () => {
 
         const student = students.required
 
@@ -56,12 +56,14 @@ describe('alunos', () => {
         studentPage.requiredMessage('Idade', 'A idade é obrigatória')
         studentPage.requiredMessage('Peso (em kg)', 'O peso é obrigatório')
         studentPage.requiredMessage('Altura', 'A altura é obrigatória')
-        
+
     })
 
-    it.only('Os campos idade, peso e altura não podem conter valores inválidos', () => {
-        
-        const student = students.inv_values
+    it('não deve cadastrar aluno com idade menor que 16 anos', () => {
+
+        const student = students.inv_age
+
+        cy.task('deleteStudent', student.email)
 
         cy.adminLogin()
 
@@ -69,9 +71,35 @@ describe('alunos', () => {
         studentPage.submitForm(student)
 
         studentPage.requiredMessage('Idade', 'A idade mínima para treinar é 16 anos!')
-        studentPage.requiredMessage('Peso (em kg)', 'O peso não pode ser menor ou igual a zero')
-        studentPage.requiredMessage('Altura', 'A altura não pode ser menor ou igual a zero')
 
+    })
+
+    it('não deve cadastrar aluno com peso menor ou igual a zero', () => {
+
+        const student = students.inv_weight
+
+        cy.task('deleteStudent', student.email)
+
+        cy.adminLogin()
+
+        studentPage.goToRegister()
+        studentPage.submitForm(student)
+
+        studentPage.requiredMessage('Peso (em kg)', 'O peso não pode ser menor ou igual a zero')
+    })
+
+    it('não deve cadastrar aluno com altura menor ou igual a zero', () => {
+
+        const student = students.inv_feet_tall
+
+        cy.task('deleteStudent', student.email)
+
+        cy.adminLogin()
+
+        studentPage.goToRegister()
+        studentPage.submitForm(student)
+
+        studentPage.requiredMessage('Altura', 'A altura não pode ser menor ou igual a zero')
     })
 
 })
