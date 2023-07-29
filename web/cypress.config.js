@@ -18,6 +18,22 @@ module.exports = defineConfig({
 
       on('task', {
 
+        selectStudentId(studentEmail) {
+          return new Promise(function (resolve, reject) {
+            const pool = new Pool(dbConfig)
+
+            const query = 'SELECT id FROM students WHERE email = $1;'
+
+            pool.query(query, [studentEmail], function (error, result) {
+              if (error) {
+                reject({ error: error })
+              }
+              resolve({ success: result })
+              pool.end()
+            })
+          })
+        },
+
         deleteStudent(studentEmail) {
           return new Promise(function (resolve, reject) {
             const pool = new Pool(dbConfig)
@@ -39,11 +55,11 @@ module.exports = defineConfig({
             const pool = new Pool(dbConfig)
 
             const query = `
-            WITH add AS (
-              INSERT INTO students (name, email, age, weight, feet_tall)
-              VALUES ($1, $2, $3, $4, $5)
-            )
-            DELETE FROM students WHERE email = $2;
+              WITH add AS (
+                INSERT INTO students (name, email, age, weight, feet_tall)
+                VALUES ($1, $2, $3, $4, $5)
+              )
+              DELETE FROM students WHERE email = $2;
             `
 
             const values = [
@@ -59,7 +75,6 @@ module.exports = defineConfig({
             })
           })
         }
-
       })
     },
   },

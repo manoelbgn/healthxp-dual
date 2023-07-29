@@ -59,7 +59,7 @@ describe('alunos', () => {
 
     })
 
-    it.only('não deve cadastrar aluno com idade menor que 16 anos', () => {
+    it('não deve cadastrar aluno com idade menor que 16 anos', () => {
 
         const student = students.inv_age
 
@@ -72,7 +72,7 @@ describe('alunos', () => {
 
     })
 
-    it.only('não deve cadastrar aluno com peso menor ou igual a zero', () => {
+    it('não deve cadastrar aluno com peso menor ou igual a zero', () => {
 
         const student = students.inv_weight
 
@@ -84,7 +84,7 @@ describe('alunos', () => {
         studentPage.alertMessage('Peso (em kg)', 'O peso não pode ser menor ou igual a zero')
     })
 
-    it.only('não deve cadastrar aluno com altura menor ou igual a zero', () => {
+    it('não deve cadastrar aluno com altura menor ou igual a zero', () => {
 
         const student = students.inv_feet_tall
 
