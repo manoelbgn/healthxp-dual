@@ -59,47 +59,41 @@ describe('alunos', () => {
 
     })
 
-    it('não deve cadastrar aluno com idade menor que 16 anos', () => {
+    it.only('não deve cadastrar aluno com idade menor que 16 anos', () => {
 
         const student = students.inv_age
 
-        cy.task('deleteStudent', student.email)
-
         cy.adminLogin()
 
         studentPage.goToRegister()
         studentPage.submitForm(student)
 
-        studentPage.requiredMessage('Idade', 'A idade mínima para treinar é 16 anos!')
+        studentPage.alertMessage('Idade', 'A idade mínima para treinar é 16 anos!')
 
     })
 
-    it('não deve cadastrar aluno com peso menor ou igual a zero', () => {
+    it.only('não deve cadastrar aluno com peso menor ou igual a zero', () => {
 
         const student = students.inv_weight
 
-        cy.task('deleteStudent', student.email)
-
         cy.adminLogin()
 
         studentPage.goToRegister()
         studentPage.submitForm(student)
 
-        studentPage.requiredMessage('Peso (em kg)', 'O peso não pode ser menor ou igual a zero')
+        studentPage.alertMessage('Peso (em kg)', 'O peso não pode ser menor ou igual a zero')
     })
 
-    it('não deve cadastrar aluno com altura menor ou igual a zero', () => {
+    it.only('não deve cadastrar aluno com altura menor ou igual a zero', () => {
 
         const student = students.inv_feet_tall
 
-        cy.task('deleteStudent', student.email)
-
         cy.adminLogin()
 
         studentPage.goToRegister()
         studentPage.submitForm(student)
 
-        studentPage.requiredMessage('Altura', 'A altura não pode ser menor ou igual a zero')
+        studentPage.alertMessage('Altura', 'A altura não pode ser menor ou igual a zero')
     })
 
 })

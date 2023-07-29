@@ -30,7 +30,7 @@ import loginPage from './pages/LoginPage'
 import studentPage from './pages/StudentPage'
 
 
-Cypress.Commands.add('adminLogin', ()=> {
+Cypress.Commands.add('adminLogin', () => {
     const user = users.admin
 
     loginPage.doLogin(user)

@@ -1,0 +1,12 @@
+{
+    "create": {
+        "student": {
+            "name": "Bruce Wayne",
+            "email": "bruce@wayne.com",
+            "age": "35",
+            "weight": "80",
+            "feet_tall": "1.79"
+        },
+        "plan": "Health"
+    }
+}
