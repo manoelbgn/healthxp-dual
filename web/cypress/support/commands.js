@@ -38,10 +38,8 @@ Cypress.Commands.add('adminLogin', () => {
 })
 
 Cypress.Commands.add('createEnroll', (dataTest) => {
-
     cy.task('selectStudentId', dataTest.student.email)
         .then(result => {
-
             cy.request({
                 url: 'http://localhost:3333/sessions',
                 method: 'POST',
@@ -68,8 +66,26 @@ Cypress.Commands.add('createEnroll', (dataTest) => {
                 }).then(response => {
                     expect(response.status).to.eq(201)
                 })
+
             })
-
         })
+})
 
+Cypress.Commands.add('resetStudent', (student) => {
+    cy.request({
+        url: 'http://localhost:5000/students',
+        method: 'POST',
+        body: student
+    }).then(response => {
+        expect(response.status).to.eq(201)
+    })
+})
+
+Cypress.Commands.add('deleteStudent', (studentEmail) => {
+    cy.request({
+        url: 'http://localhost:5000/students/' + studentEmail,
+        method: 'DELETE',
+    }).then(response => {
+        expect(response.status).to.eq(204)
+    })
 })

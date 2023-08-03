@@ -3,12 +3,13 @@ import data from '../fixtures/enrollments.json'
 
 import enrollsPage from '../support/pages/EnrollsPage'
 
-describe('matriculas', ()=> {
+describe('matriculas', () => {
 
-    it('deve poder matricular um novo aluno', ()=> {
+    it('deve poder matricular um novo aluno', () => {
         const dataTest = data.create
 
-        cy.task('resetStudent', dataTest.student)
+        // cy.task('resetStudent', dataTest.student)
+        cy.resetStudent(dataTest.student)
 
         cy.adminLogin()
 
@@ -22,10 +23,11 @@ describe('matriculas', ()=> {
         enrollsPage.popup.haveText('Matrícula cadastrada com sucesso.')
     })
 
-    it('não deve criar matricula duplicada', ()=> {
+    it('não deve criar matricula duplicada', () => {
         const dataTest = data.duplicate
 
-        cy.task('resetStudent', dataTest.student)
+        // cy.task('resetStudent', dataTest.student)
+        cy.resetStudent(dataTest.student)
         cy.createEnroll(dataTest)
 
         cy.adminLogin()
