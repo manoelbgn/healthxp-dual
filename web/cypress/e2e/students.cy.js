@@ -9,7 +9,6 @@ describe('alunos', () => {
     it('deve poder cadastrar um novo aluno', () => {
         const student = students.create
 
-        // cy.task('deleteStudent', student.email)
         cy.deleteStudent(student.email)
         cy.adminLogin()
 
@@ -22,9 +21,7 @@ describe('alunos', () => {
     it('não deve cadastrar com email duplicado', () => {
         const student = students.duplicate
 
-        // cy.task('resetStudent', student)
         cy.resetStudent(student)
-
         cy.adminLogin()
 
         studentPage.goToRegister()
@@ -35,9 +32,7 @@ describe('alunos', () => {
     it('deve remover um aluno sem matricula', () => {
         const student = students.remove
 
-        // cy.task('resetStudent', student)
         cy.resetStudent(student)
-
         cy.adminLogin()
 
         studentPage.search(student.name)

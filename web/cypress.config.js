@@ -1,5 +1,5 @@
 const { defineConfig } = require("cypress");
-// const { reject } = require("cypress/types/bluebird");
+require('dotenv').config()
 
 const { Pool } = require("pg");
 
@@ -77,5 +77,9 @@ module.exports = defineConfig({
         }
       })
     },
+    baseUrl: process.env.BASE_URL,
+    env: {
+      apiHelper: process.env.API_HELPER
+    }
   },
 });

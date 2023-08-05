@@ -8,7 +8,6 @@ describe('matriculas', () => {
     it('deve poder matricular um novo aluno', () => {
         const dataTest = data.create
 
-        // cy.task('resetStudent', dataTest.student)
         cy.resetStudent(dataTest.student)
 
         cy.adminLogin()
@@ -26,7 +25,6 @@ describe('matriculas', () => {
     it('não deve criar matricula duplicada', () => {
         const dataTest = data.duplicate
 
-        // cy.task('resetStudent', dataTest.student)
         cy.resetStudent(dataTest.student)
         cy.createEnroll(dataTest)
 
